@@ -1,11 +1,10 @@
 import React from 'react'
+import Body from "./components/Body"
 
 function App() {
   return (
     <div>
-  
-  <h1 className='text-2xl text-red-400'> Namaste SkyCast </h1>
-
+  <Body />
     </div>
   )
 }
