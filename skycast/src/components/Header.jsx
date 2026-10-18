@@ -1,24 +1,64 @@
 
 import { LOGO } from "../utils/constant";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Header = () => {
-  const location = useLocation();
+  const [videoActive, setVideoActive] = useState(false);
 
-  // Hide the header on the Browse/weather page
-  const isBrowsePage =
-    location.pathname.toLowerCase().includes("browse") ||
-    location.hash.toLowerCase().includes("forecast");
+  useEffect(() => {
+    const checkVideo = () => {
+      const videos = document.querySelectorAll("video");
 
-  if (isBrowsePage) {
-    return null;
-  }
+      setVideoActive(
+        Array.from(videos).some(
+          (video) =>
+            video.readyState >= 2 &&
+            !video.paused &&
+            video.currentSrc
+        )
+      );
+    };
+
+    checkVideo();
+
+    const videos = document.querySelectorAll("video");
+
+    videos.forEach((video) => {
+      video.addEventListener("playing", checkVideo);
+      video.addEventListener("pause", checkVideo);
+      video.addEventListener("ended", checkVideo);
+      video.addEventListener("loadeddata", checkVideo);
+    });
+
+    const observer = new MutationObserver(checkVideo);
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    return () => {
+      videos.forEach((video) => {
+        video.removeEventListener("playing", checkVideo);
+        video.removeEventListener("pause", checkVideo);
+        video.removeEventListener("ended", checkVideo);
+        video.removeEventListener("loadeddata", checkVideo);
+      });
+
+      observer.disconnect();
+    };
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-100/80 bg-white/95 shadow-sm backdrop-blur-xl">
+    <header
+      className={`sticky top-0 z-50 w-full border-b backdrop-blur-xl transition-colors duration-300 ${
+        videoActive
+          ? "border-white/20 bg-slate-100/80 shadow-md"
+          : "border-slate-200/80 bg-white/95 shadow-sm"
+      }`}
+    >
       <nav className="mx-auto flex max-w-7xl items-center justify-center px-4 py-3 sm:px-6 lg:px-8">
-        <Link
-          to="/"
+        <a
+          href="/"
           aria-label="SkyCast home"
           className="flex items-center justify-center gap-3"
         >
@@ -31,7 +71,7 @@ const Header = () => {
           <h1 className="whitespace-nowrap text-2xl font-extrabold tracking-tight text-slate-800 sm:text-3xl">
             Sky<span className="text-sky-500">Cast</span>
           </h1>
-        </Link>
+        </a>
       </nav>
     </header>
   );
