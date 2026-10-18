@@ -1,6 +1,6 @@
-import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from "./Home";
+import Browse from "./Browse"
 
 function Body() {
 
@@ -8,6 +8,11 @@ function Body() {
         {
             path: "/",
             element: <Home />
+        },
+
+        {
+          path: "/browse",
+          element:<Browse />
         },
 
     ]);

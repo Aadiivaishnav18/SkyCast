@@ -1,89 +1,38 @@
-import { useState } from "react";
+
 import { LOGO } from "../utils/constant";
-import { Moon, Sun } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
-  const [isDark, setIsDark] = useState(false);
+  const location = useLocation();
 
-  const toggleButton = () => {
-    setIsDark(!isDark);
-  };
+  // Hide the header on the Browse/weather page
+  const isBrowsePage =
+    location.pathname.toLowerCase().includes("browse") ||
+    location.hash.toLowerCase().includes("forecast");
+
+  if (isBrowsePage) {
+    return null;
+  }
 
   return (
-    <header
-      className={`flex w-full items-center justify-between gap-4 px-4 py-3 sm:px-6 md:px-10 ${
-        isDark ? "bg-slate-900" : "bg-gray-50"
-      }`}
-    >
-      
-      <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-        <img
-          className="h-22 w-14 object-contain sm:h-16 sm:w-20"
-          src={LOGO}
-          alt="SkyCast Logo"
-        />
-
-        <h1 className="whitespace-nowrap text-xl font-bold text-blue-900 sm:text-3xl">
-          Sky<span className="text-blue-500">Cast</span>
-        </h1>
-      </div>
-
-      <div className="hidden md:block">
-        <ul
-          className={`flex items-center gap-8 whitespace-nowrap ${
-            isDark ? "text-white" : "text-slate-800"
-          }`}
+    <header className="sticky top-0 z-50 w-full border-b border-slate-100/80 bg-white/95 shadow-sm backdrop-blur-xl">
+      <nav className="mx-auto flex max-w-7xl items-center justify-center px-4 py-3 sm:px-6 lg:px-8">
+        <Link
+          to="/"
+          aria-label="SkyCast home"
+          className="flex items-center justify-center gap-3"
         >
-          <li>
-            <a
-              href="#home"
-              className="cursor-pointer transition-colors hover:text-blue-500"
-            >
-              Home
-            </a>
-          </li>
+          <img
+            src={LOGO}
+            alt="SkyCast Logo"
+            className="h-12 w-12 object-contain sm:h-14 sm:w-14"
+          />
 
-          <li>
-            <a
-              href="#about"
-              className="cursor-pointer transition-colors hover:text-blue-500"
-            >
-              About
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      {/* Right: Temperature and Theme Controls */}
-      <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-        <div className="flex items-center gap-1 rounded-full bg-slate-100 p-1">
-          <button
-            className="rounded-full bg-blue-600 px-3 py-2 text-sm font-semibold text-white sm:px-4"
-            aria-label="Celsius"
-          >
-            °C
-          </button>
-
-          <button
-            className="rounded-full px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-blue-100 sm:px-4"
-            aria-label="Fahrenheit"
-          >
-            °F
-          </button>
-        </div>
-
-        <button
-          onClick={toggleButton}
-          aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-          className={`rounded-full p-2 transition-colors ${
-            isDark
-              ? "bg-slate-700 text-white hover:bg-slate-600"
-              : "bg-slate-200 text-slate-700 hover:bg-slate-300"
-          }`}
-        >
-          {isDark ? <Sun size={20} /> : <Moon size={20} />}
-        </button>
-      </div>
+          <h1 className="whitespace-nowrap text-2xl font-extrabold tracking-tight text-slate-800 sm:text-3xl">
+            Sky<span className="text-sky-500">Cast</span>
+          </h1>
+        </Link>
+      </nav>
     </header>
   );
 };
