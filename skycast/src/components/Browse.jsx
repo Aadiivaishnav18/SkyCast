@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { getWeather } from "../services/weatherApi";
 import { MORNING, SUNNY_DAY, NIGHT, RAIN } from "../utils/constant";
+import Footer from "./Footer";
 
 function getWeatherVideo(weather) {
   if (!weather?.current || !weather?.location) return null;
@@ -573,8 +574,8 @@ export default function Browse() {
                 )}
               </section>
 
-              <footer className={`border-t border-white/20 pt-5 text-center text-sm ${muted}`}>
-                Weather information for {location.name}, {location.country}.
+              <footer>
+               <Footer />
               </footer>
             </>
           )}
