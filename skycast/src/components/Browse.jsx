@@ -82,7 +82,7 @@ function Panel({ children, className = "" }) {
 
 export default function Browse() {
   const locationState = useLocation();
-  const initialCity = locationState.state?.searchCity || "Jaipur";
+  const initialCity = locationState.state?.searchCity || " ";
 
   const [query, setQuery] = useState(initialCity);
   const [weather, setWeather] = useState(null);
@@ -104,8 +104,6 @@ export default function Browse() {
       setQuery(initialCity);
       loadWeather(initialCity);
     }
-    // Initial location only; searches are handled by the form.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function loadWeather(city) {
