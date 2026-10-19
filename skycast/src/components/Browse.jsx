@@ -212,19 +212,21 @@ export default function Browse() {
           : "bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-100 text-slate-900"
       }`}
     >
-      {backgroundVideo && (
-        <video
-          key={backgroundVideo}
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-hidden="true"
-          className="pointer-events-none fixed inset-0 z-0 h-full w-full object-cover"
-        >
-          <source src={backgroundVideo} type="video/mp4" />
-        </video>
-      )}
+   
+{backgroundVideo && (
+  <video
+    key={backgroundVideo}
+    autoPlay
+    muted
+    loop
+    playsInline
+    aria-hidden="true"
+    className="pointer-events-none fixed left-0 top-0 -z-10 h-screen w-screen object-cover"
+  >
+    <source src={backgroundVideo} type="video/mp4" />
+  </video>
+)}
+
 
       {/* One translucent glass container for the complete dashboard */}
       <div
