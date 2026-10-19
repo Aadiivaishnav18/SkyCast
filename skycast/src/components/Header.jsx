@@ -57,11 +57,6 @@ const Header = () => {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-center px-4 py-3 sm:px-6 lg:px-8">
-        <a
-          href="/"
-          aria-label="SkyCast home"
-          className="flex items-center justify-center gap-3"
-        >
           <img
             src={LOGO}
             alt="SkyCast Logo"
@@ -71,7 +66,6 @@ const Header = () => {
           <h1 className="whitespace-nowrap text-2xl font-extrabold tracking-tight text-slate-800 sm:text-3xl">
             Sky<span className="text-sky-500">Cast</span>
           </h1>
-        </a>
       </nav>
     </header>
   );
