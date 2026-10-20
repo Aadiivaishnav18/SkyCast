@@ -205,15 +205,8 @@ export default function Browse() {
   }
 
   return (
-    <main
-      className={`relative isolate min-h-screen overflow-hidden px-4 py-6 transition-colors sm:px-6 lg:px-8 ${
-        hasVideo
-          ? "bg-transparent text-white"
-          : "bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-100 text-slate-900"
-      }`}
-    >
-   
-{backgroundVideo && (
+<div className="relative min-h-screen">
+    {backgroundVideo && (
   <video
     key={backgroundVideo}
     autoPlay
@@ -227,10 +220,17 @@ export default function Browse() {
   </video>
 )}
 
-
+    <main
+      className={`relative z-10 isolate min-h-screen overflow-hidden px-4 py-6 transition-colors sm:px-6 lg:px-8 ${
+        hasVideo
+          ? "bg-transparent text-white"
+          : "bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-100 text-slate-900"
+      }`}
+    >
+  
       {/* One translucent glass container for the complete dashboard */}
       <div
-        className={`relative z-0 mx-auto max-w-7xl rounded-3xl border p-4 sm:p-6 lg:p-8 ${
+        className={`relative z-10 mx-auto max-w-7xl rounded-3xl border p-4 sm:p-6 lg:p-8 ${
           hasVideo
             ? "border-white/20 bg-slate-950/15 shadow-2xl backdrop-blur-[2px]"
             : "border-white/80 bg-white/45 shadow-xl backdrop-blur-xl"
@@ -584,5 +584,6 @@ export default function Browse() {
         </div>
       </div>
     </main>
+    </div>
   );
 }
