@@ -113,7 +113,6 @@ export default function Browse() {
 
   const backgroundVideo = getWeatherVideo(weather);
   const hasVideo = Boolean(backgroundVideo);
-
   const glass = hasVideo
     ? "rounded-2xl border border-white/20 bg-slate-950/25 shadow-lg backdrop-blur-md"
     : "rounded-2xl border border-slate-200 bg-white/80 shadow-sm backdrop-blur-md";
@@ -214,19 +213,19 @@ export default function Browse() {
     loop
     playsInline
     aria-hidden="true"
-    className="pointer-events-none fixed left-0 top-0 -z-10 h-screen w-screen object-cover"
+    className="pointer-events-none fixed inset-0 z-0 h-[100dvh] w-full object-cover"  
   >
     <source src={backgroundVideo} type="video/mp4" />
   </video>
 )}
 
-    <main
-      className={`relative z-10 isolate min-h-screen overflow-hidden px-4 py-6 transition-colors sm:px-6 lg:px-8 ${
-        hasVideo
-          ? "bg-transparent text-white"
-          : "bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-100 text-slate-900"
-      }`}
-    >
+   <main
+  className={`relative z-10 min-h-screen overflow-x-hidden px-4 py-6 transition-colors sm:px-6 lg:px-8 ${
+    hasVideo
+      ? "bg-transparent text-white"
+      : "bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-100 text-slate-900"
+  }`}
+>
   
       {/* One translucent glass container for the complete dashboard */}
       <div
