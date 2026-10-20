@@ -205,19 +205,19 @@ export default function Browse() {
 
   return (
 <div className="relative min-h-screen">
-  {backgroundVideo && (
-    <video
-      key={backgroundVideo}
-      autoPlay
-      muted
-      loop
-      playsInline
-      aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-0 h-full w-full object-cover"
-    >
-      <source src={backgroundVideo} type="video/mp4" />
-    </video>
-  )}
+{backgroundVideo && (
+  <video
+    key={backgroundVideo}
+    autoPlay
+    muted
+    loop
+    playsInline
+    aria-hidden="true"
+    className="pointer-events-none fixed left-0 top-0 -z-10 h-screen w-screen object-cover"
+  >
+    <source src={backgroundVideo} type="video/mp4" />
+  </video>
+)}
 
   <main
     className={`relative z-10 min-h-screen overflow-x-hidden px-4 py-6 ${
