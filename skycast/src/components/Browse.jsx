@@ -230,7 +230,7 @@ export default function Browse() {
 
       {/* One translucent glass container for the complete dashboard */}
       <div
-        className={`relative z-10 mx-auto max-w-7xl rounded-3xl border p-4 sm:p-6 lg:p-8 ${
+        className={`relative z-0 mx-auto max-w-7xl rounded-3xl border p-4 sm:p-6 lg:p-8 ${
           hasVideo
             ? "border-white/20 bg-slate-950/15 shadow-2xl backdrop-blur-[2px]"
             : "border-white/80 bg-white/45 shadow-xl backdrop-blur-xl"

@@ -50,7 +50,7 @@ const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full border-b backdrop-blur-xl transition-colors duration-300 ${
+      className={`relative z-50 w-full border-b backdrop-blur-xl transition-colors duration-300 ${
         videoActive
           ? "border-white/20 bg-slate-100/80 shadow-md"
           : "border-slate-200/80 bg-white/95 shadow-sm"
