@@ -205,27 +205,28 @@ export default function Browse() {
 
   return (
 <div className="relative min-h-screen">
-    {backgroundVideo && (
-  <video
-    key={backgroundVideo}
-    autoPlay
-    muted
-    loop
-    playsInline
-    aria-hidden="true"
-    className="pointer-events-none fixed inset-0 z-0 h-[100dvh] w-full object-cover"  
-  >
-    <source src={backgroundVideo} type="video/mp4" />
-  </video>
-)}
+  {backgroundVideo && (
+    <video
+      key={backgroundVideo}
+      autoPlay
+      muted
+      loop
+      playsInline
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 z-0 h-full w-full object-cover"
+    >
+      <source src={backgroundVideo} type="video/mp4" />
+    </video>
+  )}
 
-   <main
-  className={`relative z-10 min-h-screen overflow-x-hidden px-4 py-6 transition-colors sm:px-6 lg:px-8 ${
-    hasVideo
-      ? "bg-transparent text-white"
-      : "bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-100 text-slate-900"
-  }`}
->
+  <main
+    className={`relative z-10 min-h-screen overflow-x-hidden px-4 py-6 ${
+      hasVideo
+        ? "bg-transparent text-white"
+        : "bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-100 text-slate-900"
+    }`}
+  >
+
   
       {/* One translucent glass container for the complete dashboard */}
       <div
