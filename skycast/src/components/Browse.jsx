@@ -37,7 +37,7 @@ function getWeatherVideo(weather) {
     weather.location.localtime?.split(" ")[1]?.split(":")[0]
   );
 
-  if (hour >= 19 || hour < 5) return NIGHT;
+  if (hour >= 18 || hour < 5) return NIGHT;
   if (hour >= 5 && hour < 9) return MORNING;
 
   return SUNNY_DAY;
@@ -98,7 +98,7 @@ function getAqiDescription(index) {
 }
 
 export default function Browse() {
-  const [query, setQuery] = useState();
+  const [query, setQuery] = useState("");
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
